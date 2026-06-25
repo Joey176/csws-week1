@@ -345,12 +345,15 @@ def run_notebook_clock(lat, lon, tz_name="Europe/London"):
             output_text += " [CLICK THE STOP BUTTON ON THE CELL TO HALT ENGINE]"
 
             # Render UI in notebook (dynamic colors applied)
-            clear_output(wait=True)
-            display(HTML(f"{container_style}{output_text}</pre></div>"))
+            # Instead of clearing the previous output on each loop, append the new output so the
+            # notebook 'descends' with time. This preserves history and allows scrolling down.
+            separator_html = '<hr style="border-top:1px solid #333; margin:10px 0;">'
+            display(HTML(f"{container_style}{output_text}</pre></div>" + separator_html))
 
             time.sleep(1)
 
     except KeyboardInterrupt:
+        # On manual interrupt we still clear the last dynamic cell for neat shutdown.
         clear_output(wait=True)
         print("METAPHYSICAL CORE ENGINE SHUT DOWN SAFELY.")
     finally:
