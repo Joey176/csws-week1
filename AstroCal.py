@@ -82,13 +82,13 @@ ASPECTS = {
 
 # Map planets to hex colors (used for text and border)
 PLANET_COLORS = {
-    "SUN": "#FFD93D",
-    "MOON": "#A8D0E6",
-    "MERCURY": "#66FCF1",
-    "VENUS": "#FF79C6",
-    "MARS": "#FF4C4C",
-    "JUPITER": "#FFB86B",
-    "SATURN": "#D3D3D3"
+    "SUN": "#FFD700",        # Gold
+    "MOON": "#C0C0C0",       # Silver
+    "MERCURY": "#FF8C00",    # Orange
+    "VENUS": "#50C878",      # Emerald Green
+    "MARS": "#FF0000",       # Red
+    "JUPITER": "#0000FF",    # Blue
+    "SATURN": "#000000"      # Black
 }
 
 # --- Utility / Calculation Modules ---
@@ -276,7 +276,7 @@ def run_notebook_clock(lat, lon, tz_name="Europe/London"):
             j_chrono, j_holiday = get_jewish_meta(now_local)
             m_illum, m_phase_name = calculate_lunar_phase(julian_day)
 
-            # determine colors dynamically
+            # determine colors dynamically - chrono lord gets its own planetary color
             border_color = PLANET_COLORS.get(p_day_ruler, "#ff1111")
             text_color = PLANET_COLORS.get(p_ruler, "#ff3333")
             # add a semitransparent shadow color from border_color
