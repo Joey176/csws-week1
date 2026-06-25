@@ -250,7 +250,7 @@ def get_aspect(p_long, other_long):
     sep = diff if diff <= 180.0 else 360.0 - diff
     nearest_aspect_angle = min(ASPECTS.keys(), key=lambda a: abs(sep - a))
     orb = abs(sep - nearest_aspect_angle)
-    sep_dms = angle_to_dms_string(sep if diff <= 180.0 else 360.0 - diff)
+    sep_dms = angle_to_dms_string(diff)
     return sep, sep_dms, ASPECTS[nearest_aspect_angle], nearest_aspect_angle, orb
 
 # --- Notebook / Colab Display Engine ---
